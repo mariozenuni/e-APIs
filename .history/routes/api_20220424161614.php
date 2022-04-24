@@ -3,7 +3,6 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductsController;
-use App\Http\Controllers\ReviewsController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -15,13 +14,8 @@ use App\Http\Controllers\ReviewsController;
 |
 */
 
-Route::middleware('auth:api')->prefix('v1')->group(function(){
-    Route::get('/user',function(Request $request){
-            return $request->user();
-    });
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
 });
 
-Route::apiResource('/products',ProductsController::class);
-Route::group(['prefix'=>'products'],function(){
-    Route::apiResource('/{product}/review',ReviewsController::class);
-});
+Route::apiResource('/products',)
