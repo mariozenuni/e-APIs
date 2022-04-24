@@ -22,6 +22,7 @@ Route::middleware('auth:api')->prefix('v1')->group(function(){
 });
 
 Route::apiResource('/products',ProductsController::class);
+
 Route::group(['prefix'=>'products'],function(){
     Route::apiResource('/{product}/review',ReviewsController::class);
 });
